@@ -1,0 +1,240 @@
+.how-it-works-page {
+    background: #fff;
+}
+
+.how-header {
+    background: #fdfaf7;
+    padding: 120px 0 80px;
+    text-align: center;
+}
+
+.how-header h1 {
+    font-family: var(--font-headings);
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #2d3436;
+    margin-bottom: 20px;
+}
+
+.how-header p {
+    font-size: 1.3rem;
+    color: #636e72;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.overview-card {
+    background: #fff;
+    padding: 60px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    margin-top: -60px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Detailed Steps */
+.how-details {
+    padding: 100px 0;
+}
+
+.details-list {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 40px;
+}
+
+/* Vertical line connecting steps */
+.details-list::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 0;
+    bottom: 0;
+    width: 2px;
+    background: #b8e9d4;
+    z-index: 1;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 100px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Circle marker on the line */
+.detail-item::before {
+    content: '';
+    position: absolute;
+    left: -44px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background: #b8e9d4;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px #b8e9d4;
+}
+
+.detail-number {
+    font-weight: 800;
+    color: #74b9ff;
+    /* Accent color for step label */
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.detail-text h3 {
+    font-family: var(--font-headings);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #2d3436;
+    margin-bottom: 15px;
+}
+
+.detail-text p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.learn-more-link {
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.learn-more-link:hover {
+    color: #e67e22;
+}
+
+.how-visual-callout {
+    background: #fff;
+}
+
+.callout-content h2 {
+    text-align: center;
+    font-family: var(--font-headings);
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 50px;
+}
+
+.callout-img-wrapper img {
+    width: 100%;
+    border-radius: 30px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+}
+
+.team-avatars {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.team-avatars img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    margin: 0 -12px;
+}
+
+.how-contact-cta h3 {
+    font-family: var(--font-headings);
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.how-bottom-cta {
+    padding: 60px 0 120px;
+}
+
+.cta-box {
+    background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%);
+    padding: 70px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #2d3436;
+    box-shadow: 0 20px 50px rgba(168, 230, 207, 0.4);
+}
+
+.cta-box h3 {
+    font-family: var(--font-headings);
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.cta-box p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+}
+
+.btn-pill {
+    border-radius: 50px !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+.btn-white {
+    background: #fff;
+    color: #2d3436 !important;
+    padding: 16px 35px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+}
+
+.btn-white:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 991px) {
+    .cta-box {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+        padding: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .how-header h1 {
+        font-size: 2.8rem;
+    }
+
+    .overview-card {
+        padding: 30px;
+        margin-top: -30px;
+    }
+
+    .process-steps-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .process-line-dashed {
+        display: none;
+    }
+
+    .detail-text h3 {
+        font-size: 1.8rem;
+    }
+}

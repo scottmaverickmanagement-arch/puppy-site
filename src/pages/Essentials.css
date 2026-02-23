@@ -1,0 +1,126 @@
+.essentials-page {
+    background-color: #fcf8f5;
+    min-height: 100vh;
+}
+
+.essentials-hero {
+    background: linear-gradient(135deg, #ff9900 0%, #ff6600 100%);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.essentials-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.essentials-hero p {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.95;
+}
+
+.essentials-category {
+    margin-bottom: 60px;
+}
+
+.essentials-category h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 30px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.essentials-category h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 100%;
+    background-color: #ff9900;
+    border-radius: 4px;
+}
+
+.items-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 30px;
+}
+
+.essential-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.essential-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-image-placeholder {
+    width: 150px;
+    background-color: #fff4e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+}
+
+.card-content {
+    padding: 30px;
+    flex: 1;
+}
+
+.card-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-content p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.cta-button {
+    background: none;
+    border: 2px solid #ff9900;
+    color: #ff9900;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #ff9900;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .items-row {
+        grid-template-columns: 1fr;
+    }
+
+    .essential-card {
+        flex-direction: column;
+    }
+
+    .card-image-placeholder {
+        width: 100%;
+        height: 200px;
+    }
+}

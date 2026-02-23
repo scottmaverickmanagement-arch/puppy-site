@@ -1,0 +1,100 @@
+.services-page {
+    background-color: #fff;
+    min-height: 100vh;
+}
+
+.services-hero {
+    background: #222;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.services-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.services-hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #aaa;
+}
+
+.service-group {
+    margin-bottom: 80px;
+}
+
+.service-group h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.services-grid-modern {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.service-card-modern {
+    padding: 40px;
+    background: #fcfcfc;
+    border: 1px solid #eee;
+    border-radius: 30px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.service-card-modern:hover {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+    transform: translateY(-5px);
+    border-color: #ff9900;
+}
+
+.service-icon-bg {
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    margin: 0 auto 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.service-info-modern h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+}
+
+.service-info-modern p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.service-cta {
+    background: #ff9900;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
+}
+
+.service-cta:hover {
+    background: #e68a00;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 153, 0, 0.4);
+}

@@ -1,0 +1,465 @@
+/* Modern Listings Page Layout */
+.listings-page-modern {
+    background-color: #fcfcfc;
+    min-height: 100vh;
+    padding-bottom: 60px;
+}
+
+.page-header-modern {
+    padding: 40px 0 30px;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 30px;
+}
+
+.page-header-modern h1 {
+    font-size: 2.5rem;
+    font-family: var(--font-headings);
+    color: #1a1a1a;
+    margin-bottom: 12px;
+}
+
+.page-header-modern p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    max-width: 900px;
+}
+
+.listings-layout-modern {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 40px;
+}
+
+/* Sidebar Styling */
+.filters-sidebar-modern {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.sidebar-header h2 {
+    font-size: 1.1rem;
+    color: #1a1a1a;
+}
+
+.clear-btn {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.filter-group-modern {
+    border-top: 1px solid #eaeaea;
+    padding: 18px 0;
+}
+
+.filter-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+
+.expand-icon {
+    font-size: 1.2rem;
+    color: #888;
+    font-weight: 300;
+}
+
+.filter-group-modern.collapsed .checkbox-group,
+.filter-group-modern.collapsed .search-input-wrapper {
+    display: none;
+}
+
+/* Checkboxes */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.checkbox-group.scrollable {
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #444;
+    user-select: none;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.custom-checkbox:hover input~.checkmark {
+    border-color: #999;
+}
+
+.custom-checkbox input:checked~.checkmark {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.custom-checkbox input:checked~.checkmark:after {
+    display: block;
+}
+
+.custom-checkbox .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Search input for filters */
+.search-input-wrapper {
+    margin-bottom: 12px;
+}
+
+.filter-search-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.filter-search-input:focus {
+    border-color: var(--color-primary);
+}
+
+/* Main Grid Area */
+.listings-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 24px;
+}
+
+.sort-dropdown-modern {
+    font-size: 0.95rem;
+    color: #444;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sort-dropdown-modern b {
+    color: #1a1a1a;
+}
+
+.dropdown-arrow {
+    font-size: 0.6rem;
+    color: #888;
+}
+
+.puppy-grid-modern {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* Modern Card Styles */
+.puppy-card-modern {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.puppy-card-modern:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.puppy-image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    /* 1:1 Aspect Ratio */
+    background: #f5f5f5;
+}
+
+.puppy-image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.puppy-media-icons {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 6px;
+}
+
+.media-badge {
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(4px);
+}
+
+.exclusive-badge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ff9900;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 6px 0;
+}
+
+.puppy-info-modern {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-grow: 1;
+}
+
+.puppy-info-text h3 {
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+
+.puppy-breed {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 2px;
+}
+
+.puppy-age {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.favorite-btn {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 2px;
+}
+
+.favorite-btn:hover {
+    color: #ff4b4b;
+}
+
+/* Pagination */
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid #eaeaea;
+}
+
+.page-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    color: #444;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.page-btn:hover {
+    background: #f5f5f5;
+}
+
+.page-btn.active {
+    background: #ff9900;
+    color: #fff;
+    border-color: #ff9900;
+}
+
+.page-btn.nav-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: #888;
+}
+
+.page-btn.nav-btn:hover {
+    color: #1a1a1a;
+}
+
+.page-ellipsis {
+    color: #888;
+    letter-spacing: 2px;
+}
+
+/* Lifestyle Section */
+.lifestyle-section {
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid #eaeaea;
+    text-align: center;
+}
+
+.lifestyle-section h2 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+}
+
+.lifestyle-section p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.lifestyle-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.lifestyle-item {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.lifestyle-item:hover {
+    transform: translateY(-5px);
+}
+
+.lifestyle-img-wrapper {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.lifestyle-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.lifestyle-item span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .puppy-grid-modern {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .listings-layout-modern {
+        grid-template-columns: 1fr;
+    }
+
+    .filters-sidebar-modern {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .lifestyle-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .puppy-grid-modern {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .filters-sidebar-modern {
+        grid-template-columns: 1fr;
+    }
+
+    .lifestyle-grid {
+        grid-template-columns: 1fr;
+    }
+}

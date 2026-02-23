@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawfect Match | Premium Hero Storytelling</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #ff9100;
+            --color-primary-dark: #e68200;
+            --color-white: #ffffff;
+            --font-headings: 'Nunito', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --transition-smooth: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            height: 100vh;
+            overflow: hidden;
+            background: #000;
+            color: var(--color-white);
+        }
+
+        .main-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: transparent;
+        }
+
+        .logo {
+            font-family: var(--font-headings);
+            font-weight: 800;
+            font-size: 1.75rem;
+            text-decoration: none;
+            color: var(--color-white);
+        }
+
+        .nav-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-left: 40px;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* Background Slider */
+        .bg-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .bg-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.8);
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .bg-slide.active {
+            opacity: 1;
+        }
+
+        /* Active Content */
+        .content-overlay {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            padding: 0 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .active-info {
+            max-width: 500px;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease 0.3s;
+        }
+
+        .active-info.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .active-info h1 {
+            font-family: var(--font-headings);
+            font-size: 4.5rem;
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .active-info p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .btn-meet {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(90deg, #ff9100, #ff6a00);
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(255, 145, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-meet:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 145, 0, 0.4);
+        }
+
+        /* Card Slider (Right Side) */
+        .card-slider {
+            display: flex;
+            gap: 20px;
+            padding-right: 60px;
+            perspective: 1000px;
+        }
+
+        .breed-card {
+            width: 200px;
+            height: 300px;
+            border-radius: 20px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: var(--transition-smooth);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .breed-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        }
+
+        .card-name {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 25px;
+        }
+
+        .social-icons a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .footer-center {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .navigation {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .pagination {
+            font-family: var(--font-headings);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        .nav-arrows {
+            display: flex;
+            gap: 15px;
+        }
+
+        .arrow {
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .arrow:hover {
+            background: var(--color-white);
+            color: #000;
+        }
+
+        /* Animations */
+        @keyframes expandToBg {
+            0% {
+                width: 200px;
+                height: 300px;
+                opacity: 1;
+            }
+
+            100% {
+                width: 100%;
+                height: 100vh;
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .content-overlay {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .active-info {
+                max-width: 100%;
+                transform: translateY(30px);
+            }
+
+            .active-info h1 {
+                font-size: 3rem;
+            }
+
+            .card-slider {
+                padding-right: 0;
+                justify-content: center;
+            }
+
+            .navbar,
+            .footer {
+                padding: 20px 30px;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="logo">Pawfect Match</a>
+        <div class="nav-links">
+            <a href="#">ABOUT</a>
+            <a href="#">CONTACT</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Background Layer -->
+        <div id="bg-layer" class="bg-slider"></div>
+
+        <div class="content-overlay">
+            <!-- Active Info -->
+            <div id="active-info" class="active-info">
+                <h1 id="breed-title">LOADING...</h1>
+                <p id="breed-desc">Bringing families together with healthy, happy puppies from vetted breeders.</p>
+                <a href="#" class="btn-meet">Meet Puppy</a>
+            </div>
+
+            <!-- Card Slider -->
+            <div id="card-slider" class="card-slider"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#">FACEBOOK</a>
+            <a href="#">YOUTUBE</a>
+            <a href="#">INSTAGRAM</a>
+        </div>
+        <div class="footer-center">FIND YOUR PAWFECT MATCH</div>
+        <div class="navigation">
+            <div class="pagination"><span id="curr-idx">01</span> / 15</div>
+            <div class="nav-arrows">
+                <div class="arrow" onclick="prevSlide()">&#10094;</div>
+                <div class="arrow" onclick="nextSlide()">&#10095;</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const breeds = [
+            { id: 1, name: 'French Bulldog', titleSlug: 'Loyal /\nCompanion', desc: 'Sweet, playful, and completely irresistible. A big personality in a small package.', bg: 'assets/frenchie-bg.jpg', card: 'assets/frenchie-card.jpg' },
+            { id: 2, name: 'Labrador Retriever', titleSlug: 'Active /\nFriendly', desc: 'The ultimate family dog with a heart of gold and boundless energy.', bg: 'assets/lab-bg.jpg', card: 'assets/lab-card.jpg' },
+            { id: 3, name: 'Golden Retriever', titleSlug: 'Gentle /\nIntelligent', desc: 'Known for their patience and legendary loyalty. A friend to everyone they meet.', bg: 'assets/golden-bg.jpg', card: 'assets/golden-card.jpg' },
+            { id: 4, name: 'German Shepherd', titleSlug: 'Brave /\nProtective', desc: 'A courageous guardian and a smart companion. Capable and devoted.', bg: 'assets/gsd-bg.jpg', card: 'assets/gsd-card.jpg' },
+            { id: 5, name: 'Poodle', titleSlug: 'Elegant /\nProud', desc: 'Remarkably smart and surprisingly athletic dogs. Graceful and full of life.', bg: 'assets/poodle-bg.jpg', card: 'assets/poodle-card.jpg' },
+            { id: 6, name: 'Dachshund', titleSlug: 'Bold /\nCurious', desc: 'Small in size but massive in personality. Brave and tireless.', bg: 'assets/dachshund-bg.jpg', card: 'assets/dachshund-card.jpg' },
+            { id: 7, name: 'Beagle', titleSlug: 'Happy /\nMusical', desc: 'Inquisitive hunters with a friendly disposition and a merry heart.', bg: 'assets/beagle-bg.jpg', card: 'assets/beagle-card.jpg' },
+            { id: 8, name: 'Rottweiler', titleSlug: 'Devoted /\nStrong', desc: 'Powerful protectors with a soft side for family. Calm and confident.', bg: 'assets/rottie-bg.jpg', card: 'assets/rottie-card.jpg' },
+            { id: 9, name: 'Bulldog', titleSlug: 'Calm /\nDignified', desc: 'Easygoing companions who love a good nap. Kind but brave.', bg: 'assets/bulldog-bg.jpg', card: 'assets/bulldog-card.jpg' },
+            { id: 10, name: 'G.S. Pointer', titleSlug: 'Energetic /\nAgile', desc: 'A versatile hunter and high-energy athlete. Always ready for adventure.', bg: 'assets/gsp-bg.jpg', card: 'assets/gsp-card.jpg' },
+            { id: 11, name: 'Yorkshire Terrier', titleSlug: 'Spunky /\nAffectionate', desc: 'Big-city attitude in a tiny, glamorous package. Sprightly and tomboyish.', bg: 'assets/yorkie-bg.jpg', card: 'assets/yorkie-card.jpg' },
+            { id: 12, name: 'Cavalier King', titleSlug: 'Sweet /\nGraceful', desc: 'The perfect lap dog with a gentle soul. Affectionate and eager to please.', bg: 'assets/cavalier-bg.jpg', card: 'assets/cavalier-card.jpg' },
+            { id: 13, name: 'Siberian Husky', titleSlug: 'Social /\nAdventurous', desc: 'Strikingly beautiful and full of wild energy. Playful and mischievous.', bg: 'assets/husky-bg.jpg', card: 'assets/husky-card.jpg' },
+            { id: 14, name: 'Boxer', titleSlug: 'Fun /\nPlayful', desc: 'High-spirited athletes who live for family fun. Patient and protective.', bg: 'assets/boxer-bg.jpg', card: 'assets/boxer-card.jpg' },
+            { id: 15, name: 'Pomeranian', titleSlug: 'Fluffy /\nExtrovert', desc: 'Bold, lively, and incredibly smart companions. Tiny but mighty.', bg: 'assets/pom-bg.jpg', card: 'assets/pom-card.jpg' }
+        ];
+
+        let currentBreeds = [...breeds];
+        const cardSlider = document.getElementById('card-slider');
+        const bgLayer = document.getElementById('bg-layer');
+        const activeInfo = document.getElementById('active-info');
+        const breedTitle = document.getElementById('breed-title');
+        const breedDesc = document.getElementById('breed-desc');
+        const currIdxSpan = document.getElementById('curr-idx');
+
+        function initSlider() {
+            renderSlides();
+            updateActive(currentBreeds[0]);
+        }
+
+        function renderSlides() {
+            cardSlider.innerHTML = '';
+            // Render the next 14 breeds as cards
+            for (let i = 1; i < currentBreeds.length; i++) {
+                const breed = currentBreeds[i];
+                const card = document.createElement('div');
+                card.className = 'breed-card';
+                card.style.backgroundImage = `url(${breed.card})`;
+                card.innerHTML = `<div class="card-name">🐾 ${breed.name}</div>`;
+                card.onclick = () => jumpToSlide(i);
+                cardSlider.appendChild(card);
+            }
+        }
+
+        function updateActive(breed) {
+            // Update Background with transition
+            const oldBg = bgLayer.querySelector('.active');
+            const newBg = document.createElement('div');
+            newBg.className = 'bg-slide';
+            newBg.style.backgroundImage = `url(${breed.bg})`;
+            bgLayer.appendChild(newBg);
+
+            // Force reflow
+            newBg.offsetHeight;
+            newBg.classList.add('active');
+
+            if (oldBg) {
+                oldBg.classList.remove('active');
+                setTimeout(() => oldBg.remove(), 1000);
+            }
+
+            // Update Text
+            activeInfo.classList.remove('visible');
+            setTimeout(() => {
+                breedTitle.innerText = breed.titleSlug;
+                breedDesc.innerText = breed.desc;
+                activeInfo.classList.add('visible');
+            }, 300);
+
+            // Update Pagination
+            const realIdx = breeds.findIndex(b => b.id === breed.id) + 1;
+            currIdxSpan.innerText = realIdx.toString().padStart(2, '0');
+        }
+
+        function nextSlide() {
+            const first = currentBreeds.shift();
+            currentBreeds.push(first);
+            renderSlides();
+            updateActive(currentBreeds[0]);
+        }
+
+        function prevSlide() {
+            const last = currentBreeds.pop();
+            currentBreeds.unshift(last);
+            renderSlides();
+            updateActive(currentBreeds[0]);
+        }
+
+        function jumpToSlide(index) {
+            for (let i = 0; i < index; i++) {
+                const first = currentBreeds.shift();
+                currentBreeds.push(first);
+            }
+            renderSlides();
+            updateActive(currentBreeds[0]);
+        }
+
+        initSlider();
+    </script>
+</body>
+
+</html>
