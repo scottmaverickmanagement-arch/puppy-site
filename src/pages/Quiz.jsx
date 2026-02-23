@@ -136,7 +136,7 @@ const Quiz = () => {
                                         {result.readyToTravel === 'Yes' ? ' Ready to travel home to you today!' : ' Currently being socialized and ready soon.'}
                                     </p>
                                     <div className="match-actions">
-                                        <a href="/listings" className="btn-match-view">Meet {result.name}</a>
+                                        <a href={`/profile/${result.id}`} className="btn-match-view">Meet {result.name}</a>
                                         <button className="btn-restart" onClick={restart}>Try Again</button>
                                     </div>
                                 </div>
