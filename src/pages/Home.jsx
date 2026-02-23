@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css';
+import { puppies } from '../data/puppies';
 
 const breeds = [
     { id: 1, name: 'French Bulldog', titleSlug: 'Loyal /\nCompanion', desc: 'Sweet, playful, and completely irresistible. A big personality in a small package.', bg: '/assets/frenchie-bg.jpg', card: '/assets/frenchie-card.jpg' },
@@ -349,7 +350,7 @@ const Home = () => {
                     </div>
                     <div className="marketing-visual">
                         <div className="img-stack">
-                            <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Happy Puppy" className="main-img" />
+                            <img src={puppies[0]?.image || "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"} alt="Happy Puppy" className="main-img" />
                             <div className="img-accent-card">
                                 <span>15,000+</span>
                                 <p>Success Stories</p>
@@ -412,16 +413,17 @@ const Home = () => {
     );
 };
 
-const favoriteBreeds = [
-    { id: 1, name: 'Goldendoodle', image: 'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=150&q=80' },
-    { id: 2, name: 'Frenchie', image: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=150&q=80' },
-    { id: 3, name: 'Bernedoodle', image: 'https://images.unsplash.com/photo-1591768793355-74d7acd75864?auto=format&fit=crop&w=150&q=80' },
-    { id: 4, name: 'Cavapoo', image: 'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=150&q=80' },
-    { id: 5, name: 'Lab', image: 'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=150&q=80' },
-    { id: 6, name: 'Golden', image: 'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=150&q=80' },
-    { id: 7, name: 'Maltipoo', image: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=150&q=80' },
-    { id: 8, name: 'Poodle', image: 'https://images.unsplash.com/photo-1591768793355-74d7acd75864?auto=format&fit=crop&w=150&q=80' },
-];
+// Derive dynamic favorite breeds from the actual puppy listings
+const favoriteBreeds = Array.from(new Set(puppies.map(p => p.breed)))
+    .slice(0, 8)
+    .map((breedName, index) => {
+        const representativePuppy = puppies.find(p => p.breed === breedName);
+        return {
+            id: index + 1,
+            name: breedName,
+            image: representativePuppy ? representativePuppy.image : 'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=150&q=80'
+        };
+    });
 
 const reviews = [
     { id: 1, author: 'The Johnson Family', location: 'California, US', stars: 5, text: 'Our kids haven\'t stopped smiling since Luna came home! The delivery was seamless, and she\'s simply the best addition to our family.', avatar: 'https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?auto=format&fit=crop&w=150&q=80' }, /* Family image */
@@ -434,11 +436,15 @@ const reviews = [
     { id: 8, author: 'Elena Rossi', location: 'Rome, Italy', stars: 5, text: 'Such a professional service. The health checks and documentation were thorough and gave us great confidence.', avatar: 'https://i.pravatar.cc/150?img=9' } /* Female image */
 ];
 
-const featuredPuppies = [
-    { id: 1, name: 'Luna', breed: 'Goldendoodle', age: '10 weeks', gender: 'Female', price: '$1,800', image: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80' },
-    { id: 2, name: 'Max', breed: 'French Bulldog', age: '12 weeks', gender: 'Male', price: '$2,500', image: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80' },
-    { id: 3, name: 'Bella', breed: 'Poodle', age: '8 weeks', gender: 'Female', price: '$1,500', image: 'https://images.unsplash.com/photo-1594136905280-973174403c98?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80' },
-    { id: 4, name: 'Cooper', breed: 'Cavapoo', age: '11 weeks', gender: 'Male', price: '$2,200', image: 'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80' },
-];
+// Derive featured puppies from actual listings (picking first 4)
+const featuredPuppies = puppies.slice(0, 4).map(p => ({
+    id: p.id,
+    name: p.name,
+    breed: p.breed,
+    age: p.age,
+    gender: p.gender,
+    price: p.price,
+    image: p.image
+}));
 
 export default Home;
