@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 
-const assetsDir = 'C:\\Users\\VICTUS\\puppies\\assets';
-const publicDir = 'C:\\Users\\VICTUS\\puppies\\public\\available_puppies';
-const dataFile = 'C:\\Users\\VICTUS\\puppies\\src\\data\\puppies.js';
+const assetsDir = './public/assets';
+const publicDir = './public/available_puppies';
+const dataFile = './src/data/puppies.js';
 
 if (!fs.existsSync(publicDir)) {
     fs.mkdirSync(publicDir, { recursive: true });
