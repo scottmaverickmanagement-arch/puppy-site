@@ -294,10 +294,21 @@
 
 .social-labels {
     display: flex;
-    gap: 30px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 3px;
+    gap: 24px;
+    align-items: center;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    color: var(--color-primary);
+    transform: translateY(-3px);
 }
 
 .hero-tagline {
