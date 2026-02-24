@@ -3,6 +3,19 @@ import './Header.css';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState(null);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+        setActiveDropdown(null); // Reset dropdowns when closing menu
+    };
+
+    const toggleDropdown = (e, name) => {
+        if (window.innerWidth <= 992) {
+            e.preventDefault();
+            setActiveDropdown(activeDropdown === name ? null : name);
+        }
+    };
 
     return (
         <header className="header sticky">
@@ -18,31 +31,37 @@ const Header = () => {
                 </div>
 
                 <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
-                    <li className="nav-item dropdown-trigger">
-                        <a href="/listings">Available Puppies <span className="dropdown-arrow">▼</span></a>
+                    <li className={`nav-item dropdown-trigger ${activeDropdown === 'puppies' ? 'mobile-active' : ''}`}>
+                        <a href="/listings" onClick={(e) => toggleDropdown(e, 'puppies')}>
+                            Available Puppies <span className="dropdown-arrow">▼</span>
+                        </a>
                         <ul className="dropdown-menu">
-                            <li><a href="/listings?category=apartment">Apartment Dogs</a></li>
-                            <li><a href="/listings?category=allergy">Allergy Friendly Dogs</a></li>
-                            <li><a href="/listings?category=family">Family Dogs</a></li>
-                            <li><a href="/listings?category=active">Active Dogs</a></li>
-                            <li><a href="/listings?category=purebred">Pure Bred</a></li>
-                            <li><a href="/listings?category=designer">Designer</a></li>
-                            <li><a href="/listings">Explore All Breeds</a></li>
+                            <li><a href="/listings?category=apartment" onClick={() => setIsMenuOpen(false)}>Apartment Dogs</a></li>
+                            <li><a href="/listings?category=allergy" onClick={() => setIsMenuOpen(false)}>Allergy Friendly Dogs</a></li>
+                            <li><a href="/listings?category=family" onClick={() => setIsMenuOpen(false)}>Family Dogs</a></li>
+                            <li><a href="/listings?category=active" onClick={() => setIsMenuOpen(false)}>Active Dogs</a></li>
+                            <li><a href="/listings?category=purebred" onClick={() => setIsMenuOpen(false)}>Pure Bred</a></li>
+                            <li><a href="/listings?category=designer" onClick={() => setIsMenuOpen(false)}>Designer</a></li>
+                            <li><a href="/listings" onClick={() => setIsMenuOpen(false)}>Explore All Breeds</a></li>
                         </ul>
                     </li>
-                    <li className="nav-item dropdown-trigger">
-                        <a href="/about">About Us <span className="dropdown-arrow">▼</span></a>
+                    <li className={`nav-item dropdown-trigger ${activeDropdown === 'about' ? 'mobile-active' : ''}`}>
+                        <a href="/about" onClick={(e) => toggleDropdown(e, 'about')}>
+                            About Us <span className="dropdown-arrow">▼</span>
+                        </a>
                         <ul className="dropdown-menu">
-                            <li><a href="/how-it-works">How It Works</a></li>
-                            <li><a href="/how-it-works">Delivery Methods</a></li>
-                            <li><a href="/promise">Our Promise</a></li>
+                            <li><a href="/how-it-works" onClick={() => setIsMenuOpen(false)}>How It Works</a></li>
+                            <li><a href="/how-it-works" onClick={() => setIsMenuOpen(false)}>Delivery Methods</a></li>
+                            <li><a href="/promise" onClick={() => setIsMenuOpen(false)}>Our Promise</a></li>
                         </ul>
                     </li>
-                    <li className="nav-item dropdown-trigger">
-                        <a href="/shop">Shop <span className="dropdown-arrow">▼</span></a>
+                    <li className={`nav-item dropdown-trigger ${activeDropdown === 'shop' ? 'mobile-active' : ''}`}>
+                        <a href="/shop" onClick={(e) => toggleDropdown(e, 'shop')}>
+                            Shop <span className="dropdown-arrow">▼</span>
+                        </a>
                         <ul className="dropdown-menu">
-                            <li><a href="/shop/essentials">Dog Essentials</a></li>
-                            <li><a href="/shop/services">Services</a></li>
+                            <li><a href="/shop/essentials" onClick={() => setIsMenuOpen(false)}>Dog Essentials</a></li>
+                            <li><a href="/shop/services" onClick={() => setIsMenuOpen(false)}>Services</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -54,7 +73,7 @@ const Header = () => {
                     <a href="tel:8886710518" className="btn btn-primary concierge-btn">
                         Call Now: (888) 671-0518
                     </a>
-                    <button className="mobile-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    <button className={`mobile-toggle ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
                         <span></span>
                         <span></span>
                         <span></span>

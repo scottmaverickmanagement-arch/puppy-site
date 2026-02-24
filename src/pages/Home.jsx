@@ -193,7 +193,6 @@ const Home = () => {
                     </div>
 
                     <div className="card-slider-wrapper">
-                        <div className="arrow arrow-left" onClick={prevSlide}>&#10094;</div>
                         <div className="card-slider-container">
                             <div
                                 className="card-slider"
@@ -219,7 +218,10 @@ const Home = () => {
                                 ))}
                             </div>
                         </div>
-                        <div className="arrow arrow-right" onClick={nextSlide}>&#10095;</div>
+                        <div className="slider-nav-mobile">
+                            <div className="arrow arrow-left" onClick={prevSlide}>&#10094;</div>
+                            <div className="arrow arrow-right" onClick={nextSlide}>&#10095;</div>
+                        </div>
                     </div>
                 </div>
 

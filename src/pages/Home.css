@@ -320,9 +320,11 @@
     letter-spacing: 4px;
 }
 
-.nav-arrows {
-    display: flex;
-    gap: 15px;
+.slider-nav-mobile {
+    display: none;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
 }
 
 .arrow {
@@ -762,24 +764,114 @@
 
 /* Mobile Responsiveness */
 @media (max-width: 1100px) {
+    .premium-hero {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+
     .hero-content-wrapper {
         flex-direction: column;
         text-align: center;
-        gap: 40px;
-        padding-top: 80px;
-    }
-
-    .card-slider-wrapper {
-        width: 100%;
-    }
-
-    .card-slider {
-        justify-content: center;
+        align-items: center;
+        gap: 60px;
+        padding: 0 20px;
     }
 
     .active-info {
         max-width: 100%;
-        transform: translateY(20px);
+        padding-bottom: 0;
+        transform: translateY(0);
+        margin: 0 auto;
+    }
+
+    .active-info h1 {
+        font-size: 3rem;
+    }
+
+    .card-slider-wrapper {
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .card-slider-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .slider-nav-mobile {
+        display: flex;
+    }
+
+    .arrow {
+        position: static;
+        transform: none;
+        width: 60px;
+        height: 60px;
+    }
+
+    .card-slider-wrapper .arrow {
+        display: none;
+    }
+
+    .slider-nav-mobile .arrow {
+        display: flex;
+    }
+
+    .hero-nav-footer {
+        padding: 40px 20px 0;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .hero-tagline {
+        display: none;
+    }
+
+    .trust-premium-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .breeds-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .marketing-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .marketing-visual {
+        order: -1;
+    }
+
+    .img-accent-card {
+        left: 0;
+        bottom: -20px;
+        padding: 15px;
+    }
+
+    .process-steps-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .process-line-dashed {
+        display: none;
+    }
+
+    .section-header-centered h2 {
+        font-size: 2rem;
+    }
+
+    .review-card-modern {
+        width: 300px;
+        padding: 25px;
     }
 }
 
@@ -791,39 +883,18 @@
     .active-info h1 {
         font-size: 2.5rem;
     }
-
-    .trust-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-
-    .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
-
-    .hero-nav-footer {
-        padding: 0 40px;
-    }
-
-    .hero-tagline {
-        display: none;
-    }
 }
 
 @media (max-width: 480px) {
-    .trust-grid {
+    .breeds-grid {
         grid-template-columns: 1fr;
     }
 
-    .puppy-grid {
-        grid-template-columns: 1fr;
+    .active-info h1 {
+        font-size: 2.2rem;
     }
 
-    .hero-nav-footer {
-        flex-direction: column;
-        gap: 20px;
-        bottom: 20px;
+    .marketing-content h2 {
+        font-size: 2.2rem;
     }
 }
