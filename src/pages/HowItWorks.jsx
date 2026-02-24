@@ -107,7 +107,9 @@ const HowItWorks = () => {
                         <div className="callout-content">
                             <h2>How we place healthy puppies into happy homes</h2>
                             <div className="callout-img-wrapper">
-                                <img src="https://images.unsplash.com/photo-1548191265-cc70d3d45ba1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Puppy Care" />
+                                <video autoPlay muted loop playsInline className="callout-video">
+                                    <source src="/assets/our promise-bg.mp4" type="video/mp4" />
+                                </video>
                             </div>
                         </div>
                     </div>

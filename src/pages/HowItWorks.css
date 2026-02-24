@@ -128,10 +128,12 @@
     margin-bottom: 50px;
 }
 
-.callout-img-wrapper img {
+.callout-img-wrapper img,
+.callout-video {
     width: 100%;
     border-radius: 30px;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+    display: block;
 }
 
 .team-avatars {
